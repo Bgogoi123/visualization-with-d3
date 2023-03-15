@@ -7,6 +7,7 @@ import NavbarContent from "./pages/Navigation/NavbarContent";
 import NavHeader from "./pages/Navigation/NavHeader";
 import Sketchbook from "./pages/Sketchbook";
 import Smile from "./pages/Smile";
+import TrialPage from "./pages/TrialPage";
 
 const routes = createBrowserRouter([
   {
@@ -32,6 +33,15 @@ const routes = createBrowserRouter([
     element: (
       <SideNav navContent={<NavbarContent />} navHeader={<NavHeader />}>
         <Sketchbook />
+      </SideNav>
+    ),
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/trial",
+    element: (
+      <SideNav navContent={<NavbarContent />} navHeader={<NavHeader />}>
+        <TrialPage />
       </SideNav>
     ),
     errorElement: <ErrorPage />,

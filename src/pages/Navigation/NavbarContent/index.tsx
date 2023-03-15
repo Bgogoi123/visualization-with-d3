@@ -1,8 +1,8 @@
 import { Flex, Navbar, Text } from "@mantine/core";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { linkContainer } from "../../../components/SideNav/styles";
 import { links } from "../../../constants";
+import "./styles.css";
 
 const NavbarContent = () => {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const NavbarContent = () => {
             key={index}
             onClick={() => navigate(link.path)}
           >
-            {link.icon}
+            {link.path === "/trial" ? <span>{link.icon}</span> : link.icon}
             <Text>{link.label}</Text>
           </Flex>
         );

@@ -1,83 +1,109 @@
 import * as d3 from "d3";
-import { arc } from "d3";
 import { useEffect, useState } from "react";
+import { SketchbookContext } from "../../context";
+import { TBrushType, TDashBrushType } from "../../types";
+import { Line } from "./Line";
+import Tools from "./Tools";
+import "./styles.css";
+import pencilCursor from "../../assets/icons/pointerIcons/pencilCursor.svg";
+import eraserCursor from "../../assets/icons/pointerIcons/eraserCursor.svg";
 
 const Sketchbook = () => {
-  const [enableArc, setEnableArc] = useState<boolean>(false);
-  const [mousePos, setMousePos] = useState<{ x: number; y: number }>({
-    x: 0,
-    y: 0,
+  const [thickness, setThickness] = useState<number>(2);
+  const [color, setColor] = useState<string>("#000");
+  const [drawing, setDrawing] = useState(false);
+  const [currentLine, setCurrentLine] = useState<{
+    thickness: number;
+    points: { x: number; y: number }[];
+  }>({
+    thickness,
+    points: [],
+  });
+  const [lines, setLines] = useState<
+    {
+      thickness: number;
+      points: {
+        x: number;
+        y: number;
+      }[];
+    }[]
+  >([]);
+
+  const [brushType, setBrushType] = useState<TBrushType>({
+    default: true,
+    dash: false,
+    circular: false,
+    eraser: false,
   });
 
-  useEffect(() => {
-    function handleMouseMove(event: MouseEvent) {
-      setMousePos({
-        x: event.clientX,
-        y: event.clientY,
-      });
-    }
+  const [dashBrushType, setDashBrushType] = useState<TDashBrushType>("5,10,5");
 
-    return window.addEventListener("mousemove", (e) => handleMouseMove(e));
+  useEffect(() => {
+    d3.select("svg").on("mousemove", (event) => {
+      const [x, y] = d3.pointer(event);
+
+      setCurrentLine((prev) => ({
+        ...prev,
+        points: [...prev.points, { x, y }],
+      }));
+    });
   }, []);
 
-  if (enableArc) {
-    // draw line
-    // d3.select("svg")
-    //   .selectAll("g")
-    //   .each(function () {
-    //     d3.select(this)
-    //       .append("line")
-    //       .attr("r", "0.1px")
-    //       .attr("fill", "black")
-    //       .attr("cx", mousePos.x - 315)
-    //       .attr("cy", mousePos.y - 85)
-    //       .attr("stroke", "black")
-    //       .attr("strokeWidth", "10px");
-    //   });
-    // draw dots
-    // d3.select("svg")
-    //   .selectAll("g")
-    //   .each(function () {
-    //     d3.select(this)
-    //       .append("circle")
-    //       .attr("r", "0.1px")
-    //       .attr("fill", "black")
-    //       .attr("cx", mousePos.x - 315)
-    //       .attr("cy", mousePos.y - 85)
-    //       .attr("stroke", "black")
-    //       .attr("strokeWidth", "10px");
-    //   });
-  }
+  const newPoints0: [number, number][] = [];
+  currentLine.points.forEach((pt) => {
+    newPoints0.push([pt.x, pt.y]);
+  });
 
   return (
-    <div
-      style={{ backgroundColor: "lightgrey" }}
-      onMouseDown={() => setEnableArc(true)}
-      onMouseUp={() => setEnableArc(false)}
+    <SketchbookContext.Provider
+      value={{
+        thickness,
+        setThickness,
+        brushType,
+        setBrushType,
+        dashBrushType,
+        setDashBrushType,
+        color,
+        setColor,
+      }}
     >
-      <svg
-        height={900}
-        style={{
-          width: "100%",
+      <Tools />
+      <div
+        className="drawableAreaContainer"
+        style={
+          brushType.eraser
+            ? {
+                cursor: `url(${eraserCursor}) 5 20, pointer`,
+              }
+            : {
+                cursor: `url(${pencilCursor}) 5 20, pointer`,
+              }
+        }
+        onMouseDown={() => {
+          setDrawing(true);
+          setCurrentLine({ thickness, points: [] });
+        }}
+        onMouseUp={() => {
+          setDrawing(false);
+          setLines((lines) => [...lines, currentLine]);
         }}
       >
-        <g>
-          <line
-            x1="0"
-            y1="0"
-            x2="200"
-            y2="200"
-            style={{ stroke: "rgb(255,0,0)", strokeWidth: 2 }}
-          />
-          <path
-            d="M 100 350 q 150 -300 300 0"
-            stroke="blue"
-            stroke-width="5"
-            fill="none"
-          />
-        </g>
-      </svg>
-    </div>
+        <svg
+          height={900}
+          style={{
+            width: "100%",
+          }}
+        >
+          <g>
+            <Line
+              thickness={currentLine.thickness}
+              points={newPoints0}
+              drawing={drawing}
+            />
+          </g>
+        </svg>
+      </div>
+    </SketchbookContext.Provider>
   );
 };
 

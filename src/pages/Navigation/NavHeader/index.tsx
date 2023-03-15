@@ -1,5 +1,5 @@
 import { Flex, Header, Text } from "@mantine/core";
-import { Logo } from "../../../constants";
+import { Logo } from "./Logo";
 
 const NavHeader = () => {
   return (
