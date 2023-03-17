@@ -1,28 +1,32 @@
-import { ActionIcon, Button, Flex } from "@mantine/core";
-import { useContext } from "react";
+import { ActionIcon, Flex } from "@mantine/core";
 import * as d3 from "d3";
-import BrushSizes from "./BrushSizes";
-import BrushTypes from "./BrushTypes";
-import BrushColors from "./BrushColors";
-import { toolsContainer } from "./styles";
-import { SketchbookContext } from "../../context";
+import { useContext } from "react";
 import clearIcon from "../../assets/icons/clearIcon.svg";
 import eraserIcon from "../../assets/icons/eraserIcon.svg";
 import pencilIcon from "../../assets/icons/pointerIcons/pencilCursor.svg";
+import { SocketContext } from "../../components/SocketContainer";
+import { SketchbookContext } from "../../context";
+import BrushColors from "./BrushColors";
+import BrushSizes from "./BrushSizes";
+import BrushTypes from "./BrushTypes";
+import { toolsContainer } from "./styles";
 
 const Tools = () => {
   const { brushType, setBrushType } = useContext(SketchbookContext);
+  const { socket } = useContext(SocketContext);
 
   const clearAll = () => {
     const svg = d3.select("svg#drawable-area");
     svg.selectAll("*").remove();
+
+    // clear all screens
+    socket.emit("clear", { clear: true });
   };
 
   const handleErase = () => {
     setBrushType({
       default: false,
       dash: false,
-      circular: false,
       eraser: true,
     });
   };
@@ -31,7 +35,6 @@ const Tools = () => {
     setBrushType({
       default: true,
       dash: false,
-      circular: false,
       eraser: false,
     });
   };

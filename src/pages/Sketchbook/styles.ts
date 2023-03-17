@@ -8,11 +8,6 @@ export const toolsContainer: CSSObject = {
   backgroundColor: "white",
 };
 
-export const brushSizeLabel: CSSObject = {
-  fontSize: "10px",
-  textAlign: "center",
-};
-
 // brush sizes
 export const brushSizeContainer: CSSObject = {
   border: "1px solid #d6d6d6",
@@ -77,16 +72,9 @@ export const brushSizeXL: CSSObject = {
 
 // brush types
 export const brushTypeContainer: CSSObject = {
-  border: "1px solid #d6d6d6",
   borderRadius: "5px",
-  padding: "0 0 4px 0",
-  display: "flex",
-  flexDirection: "column",
-  width: "200px",
-};
-
-export const circularBrushStyle: CSSObject = {
-  height: "10px",
+  padding: "5px",
+  cursor: "pointer",
 };
 
 // brush colors

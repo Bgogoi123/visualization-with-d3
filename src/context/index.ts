@@ -6,7 +6,7 @@ type TSketchbookContext = {
   setThickness: React.Dispatch<React.SetStateAction<number>>;
   brushType: TBrushType;
   setBrushType: React.Dispatch<React.SetStateAction<TBrushType>>;
-  dashBrushType: string;
+  dashBrushType: TDashBrushType;
   setDashBrushType: React.Dispatch<React.SetStateAction<TDashBrushType>>;
   color: string;
   setColor: React.Dispatch<React.SetStateAction<string>>;
@@ -19,7 +19,6 @@ export const SketchbookContext = createContext<TSketchbookContext>({
   setThickness: () => {},
   brushType: {
     default: true,
-    circular: false,
     dash: false,
     eraser: false,
   },

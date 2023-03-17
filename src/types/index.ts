@@ -1,7 +1,6 @@
 export type TBrushType = {
   default: boolean;
   dash: boolean;
-  circular: boolean;
   eraser: boolean;
 };
 

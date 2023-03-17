@@ -1,34 +1,14 @@
-import { Box, Button, Flex, Text, UnstyledButton } from "@mantine/core";
+import { Box, Flex, UnstyledButton } from "@mantine/core";
 import { useContext } from "react";
-import { ERASER_COLOR } from "../../constants";
+import { BRUSH_COLORS, ERASER_COLOR } from "../../constants";
 import { SketchbookContext } from "../../context";
-import {
-  brushColor,
-  brushColorContainer,
-  brushSizeLabel,
-  selectedColor,
-} from "./styles";
-
-const brushColors = [
-  "#ffffff", //white
-  "#f2ff00", //yellow
-  "#fd7e14", //orange
-  "#fa5252", //red
-  "#e64980", //pink
-  "#ba05e8", //violet
-  "#0508b0", //darkblue
-  "#00ccff", //lightblue
-  "#82c91e", //lightgreen
-  "#0f6300", //darkgreen
-  "#824d03", //brown
-  "#000000", //black
-];
+import { brushColor, brushColorContainer, selectedColor } from "./styles";
 
 const BrushColors = () => {
   const { color: currentColor, setColor } = useContext(SketchbookContext);
 
   return (
-    <Box sx={brushColorContainer}>
+    <Box sx={brushColorContainer} title="Colors">
       <Flex
         direction={"column"}
         justify="center"
@@ -62,7 +42,7 @@ const BrushColors = () => {
         columnGap={"15px"}
         rowGap="3px"
       >
-        {brushColors.map((color, index) => {
+        {BRUSH_COLORS.map((color, index) => {
           return (
             <UnstyledButton
               onClick={() => setColor(color)}

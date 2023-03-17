@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SketchbookContext } from "../../context";
 import { TBrushType, TDashBrushType } from "../../types";
 import { Line } from "./Line";
@@ -9,11 +9,12 @@ import pencilCursor from "../../assets/icons/pointerIcons/pencilCursor.svg";
 import eraserCursor from "../../assets/icons/pointerIcons/eraserCursor.svg";
 
 const Sketchbook = () => {
-  const [thickness, setThickness] = useState<number>(2);
+  // const [thickness, setThickness] = useState<number>(2);
   const [color, setColor] = useState<string>("#000");
   const [drawing, setDrawing] = useState<boolean>(false);
   const [drawingPaused, setDrawingPaused] = useState<boolean | "end">(false);
   const [svgElement, setSvgElement] = useState<string>("");
+  const [thickness, setThickness] = useState<number>(1);
 
   const [currentLine, setCurrentLine] = useState<{
     thickness: number;
@@ -35,7 +36,6 @@ const Sketchbook = () => {
   const [brushType, setBrushType] = useState<TBrushType>({
     default: true,
     dash: false,
-    circular: false,
     eraser: false,
   });
 
@@ -104,7 +104,6 @@ const Sketchbook = () => {
         >
           <g id="path-group">
             <Line
-              thickness={currentLine.thickness}
               points={newPoints0}
               drawing={drawing}
               drawingPaused={drawingPaused}
