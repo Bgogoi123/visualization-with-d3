@@ -1,18 +1,19 @@
 import { ERASER_COLOR } from "../../constants";
 import { IDefinePath, IRemoveExtraPaths } from "../../interfaces";
 
+// define <path> elements based on selected filters
 export const definePath = ({
   svg,
   color,
   thisLine,
   brushType,
-  newPoints,
+  points,
   thickness,
   dashBrushType,
 }: IDefinePath) => {
   svg
     .append("path")
-    .datum(newPoints)
+    .datum(points)
     .attr("id", "drawable-path")
     .attr("d", thisLine)
     .attr("stroke", brushType.eraser ? ERASER_COLOR : color)
@@ -25,6 +26,7 @@ export const definePath = ({
     .attr("fill", "none");
 };
 
+// remove extra <path> elements
 export const removeExtraPaths = ({
   svg,
   color,
@@ -46,6 +48,7 @@ export const removeExtraPaths = ({
     .attr("fill", "none");
 };
 
+// update the sketchbook with the latest svg elements
 export const updateSketchbook = ({
   svgElement,
   oldArea,

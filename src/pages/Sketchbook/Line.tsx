@@ -5,12 +5,10 @@ import { SketchbookContext } from "../../context";
 import { definePath, removeExtraPaths, updateSketchbook } from "./functions";
 
 export const Line = ({
-  points,
   drawing,
   drawingPaused,
   setDrawingPaused,
 }: {
-  points: [number, number][];
   drawing: boolean;
   drawingPaused: boolean | "end";
   setDrawingPaused: (value: React.SetStateAction<boolean | "end">) => void;
@@ -23,14 +21,10 @@ export const Line = ({
     thickness,
     svgElement,
     setSvgElement,
+    currentLine,
   } = useContext(SketchbookContext);
   const [mainPath, setMainPath] = useState<unknown>();
   const [enableRemove, setEnableRemove] = useState<boolean>(false);
-
-  const newPoints: [number, number][] = [];
-  points.forEach((pt) => {
-    newPoints.push([pt[0], pt[1]]);
-  });
 
   const thisLine = useMemo(() => {
     return d3
@@ -44,12 +38,13 @@ export const Line = ({
     let svg = d3.select("#drawable-area");
 
     if (drawing) {
+      const points = currentLine.points;
       definePath({
         svg,
         color,
         thisLine,
         brushType,
-        newPoints,
+        points,
         thickness,
         dashBrushType,
       });
@@ -65,7 +60,7 @@ export const Line = ({
 
       setDrawingPaused(false);
     }
-  }, [points]);
+  }, [currentLine.points]);
 
   useEffect(() => {
     let svg = d3.select("#drawable-area");

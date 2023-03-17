@@ -11,7 +11,7 @@ export interface IDefinePath {
   color: string;
   thisLine: d3.Line<[number, number]>;
   brushType: TBrushType;
-  newPoints: [number, number][];
+  points: [number, number][];
   thickness: number;
   dashBrushType: TDashBrushType;
 }

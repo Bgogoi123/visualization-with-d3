@@ -1,37 +1,27 @@
 import * as d3 from "d3";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import eraserCursor from "../../assets/icons/pointerIcons/eraserCursor.svg";
+import pencilCursor from "../../assets/icons/pointerIcons/pencilCursor.svg";
 import { SketchbookContext } from "../../context";
 import { TBrushType, TDashBrushType } from "../../types";
 import { Line } from "./Line";
-import Tools from "./Tools";
 import "./styles.css";
-import pencilCursor from "../../assets/icons/pointerIcons/pencilCursor.svg";
-import eraserCursor from "../../assets/icons/pointerIcons/eraserCursor.svg";
+import Tools from "./Tools";
 
 const Sketchbook = () => {
-  // const [thickness, setThickness] = useState<number>(2);
+  const [thickness, setThickness] = useState<number>(2);
   const [color, setColor] = useState<string>("#000");
   const [drawing, setDrawing] = useState<boolean>(false);
   const [drawingPaused, setDrawingPaused] = useState<boolean | "end">(false);
   const [svgElement, setSvgElement] = useState<string>("");
-  const [thickness, setThickness] = useState<number>(1);
 
   const [currentLine, setCurrentLine] = useState<{
     thickness: number;
-    points: { x: number; y: number }[];
+    points: [number, number][];
   }>({
     thickness,
     points: [],
   });
-  const [lines, setLines] = useState<
-    {
-      thickness: number;
-      points: {
-        x: number;
-        y: number;
-      }[];
-    }[]
-  >([]);
 
   const [brushType, setBrushType] = useState<TBrushType>({
     default: true,
@@ -47,15 +37,10 @@ const Sketchbook = () => {
 
       setCurrentLine((prev) => ({
         ...prev,
-        points: [...prev.points, { x, y }],
+        points: [...prev.points, [x, y]],
       }));
     });
   }, []);
-
-  const newPoints0: [number, number][] = [];
-  currentLine.points.forEach((pt) => {
-    newPoints0.push([pt.x, pt.y]);
-  });
 
   return (
     <SketchbookContext.Provider
@@ -68,6 +53,8 @@ const Sketchbook = () => {
         setDashBrushType,
         color,
         setColor,
+        currentLine,
+        setCurrentLine,
         svgElement,
         setSvgElement,
       }}
@@ -92,7 +79,7 @@ const Sketchbook = () => {
         onMouseUp={() => {
           setDrawing(false);
           setDrawingPaused("end");
-          setLines((lines) => [...lines, currentLine]);
+          // setLines((lines) => [...lines, currentLine]);
         }}
       >
         <svg
@@ -104,7 +91,7 @@ const Sketchbook = () => {
         >
           <g id="path-group">
             <Line
-              points={newPoints0}
+              // points={currentLine.points}
               drawing={drawing}
               drawingPaused={drawingPaused}
               setDrawingPaused={setDrawingPaused}
