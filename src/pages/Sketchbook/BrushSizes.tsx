@@ -30,8 +30,8 @@ const BrushSizes = () => {
   ];
 
   return (
-    <Box sx={brushSizeContainer}>
-      <Text sx={brushSizeLabel}>Size</Text>
+    <Box sx={brushSizeContainer} title="Brush Size">
+      {/* <Text sx={brushSizeLabel}>Size</Text> */}
       <Flex direction={"row"} justify={"center"} align="center" gap={"5px"}>
         {sizes.map((size, index) => {
           return (

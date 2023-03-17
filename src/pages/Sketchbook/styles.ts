@@ -20,7 +20,7 @@ export const brushSizeContainer: CSSObject = {
   display: "flex",
   flexDirection: "column",
   gap: "2px",
-  padding: "0 10px 2px 10px",
+  padding: "4px 10px 4px 10px",
 };
 
 export const brushSize: CSSObject = {
@@ -96,8 +96,8 @@ export const brushColorContainer: CSSObject = {
   borderRadius: "5px",
   padding: "5px",
   display: "flex",
-  flexDirection: "column",
-  gap: "3px",
+  flexDirection: "row",
+  gap: "1.5em",
   width: "200px",
 };
 

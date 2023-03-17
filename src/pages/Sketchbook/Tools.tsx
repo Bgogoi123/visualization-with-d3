@@ -44,6 +44,7 @@ const Tools = () => {
       align={"center"}
       sx={toolsContainer}
     >
+      {/* clear all */}
       <ActionIcon
         variant={"default"}
         color={"dark"}
@@ -54,16 +55,7 @@ const Tools = () => {
         <img src={clearIcon} width="15px" height={"15px"} />
       </ActionIcon>
 
-      <ActionIcon
-        variant={!brushType.eraser ? "light" : "default"}
-        color={!brushType.eraser ? "indigo" : "dark"}
-        size={"md"}
-        onClick={enablePencil}
-        title="Pencil"
-      >
-        <img src={pencilIcon} width="15px" height={"15px"} />
-      </ActionIcon>
-
+      {/* eraser */}
       <ActionIcon
         variant={brushType.eraser ? "light" : "default"}
         color={brushType.eraser ? "indigo" : "dark"}
@@ -74,8 +66,19 @@ const Tools = () => {
         <img src={eraserIcon} width="15px" height={"15px"} />
       </ActionIcon>
 
-      <BrushSizes />
+      {/* Pencil */}
+      <ActionIcon
+        variant={!brushType.eraser ? "light" : "default"}
+        color={!brushType.eraser ? "indigo" : "dark"}
+        size={"md"}
+        onClick={enablePencil}
+        title="Pencil"
+      >
+        <img src={pencilIcon} width="15px" height={"15px"} />
+      </ActionIcon>
+
       <BrushTypes />
+      <BrushSizes />
       <BrushColors />
     </Flex>
   );

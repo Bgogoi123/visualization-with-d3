@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import SideNav from "./components/SideNav";
+import SocketContainer from "./components/SocketContainer";
 import { ErrorPage } from "./pages/ErrorPage";
 import HomePage from "./pages/HomePage";
 import NavbarContent from "./pages/Navigation/NavbarContent";
@@ -49,7 +50,11 @@ const routes = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={routes} />;
+  return (
+    <SocketContainer>
+      <RouterProvider router={routes} />
+    </SocketContainer>
+  );
 }
 
 export default App;

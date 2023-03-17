@@ -11,7 +11,10 @@ import eraserCursor from "../../assets/icons/pointerIcons/eraserCursor.svg";
 const Sketchbook = () => {
   const [thickness, setThickness] = useState<number>(2);
   const [color, setColor] = useState<string>("#000");
-  const [drawing, setDrawing] = useState(false);
+  const [drawing, setDrawing] = useState<boolean>(false);
+  const [drawingPaused, setDrawingPaused] = useState<boolean | "end">(false);
+  const [svgElement, setSvgElement] = useState<string>("");
+
   const [currentLine, setCurrentLine] = useState<{
     thickness: number;
     points: { x: number; y: number }[];
@@ -65,6 +68,8 @@ const Sketchbook = () => {
         setDashBrushType,
         color,
         setColor,
+        svgElement,
+        setSvgElement,
       }}
     >
       <Tools />
@@ -81,10 +86,12 @@ const Sketchbook = () => {
         }
         onMouseDown={() => {
           setDrawing(true);
+          setDrawingPaused(true);
           setCurrentLine({ thickness, points: [] });
         }}
         onMouseUp={() => {
           setDrawing(false);
+          setDrawingPaused("end");
           setLines((lines) => [...lines, currentLine]);
         }}
       >
@@ -93,12 +100,15 @@ const Sketchbook = () => {
           style={{
             width: "100%",
           }}
+          id="drawable-container"
         >
-          <g>
+          <g id="path-group">
             <Line
               thickness={currentLine.thickness}
               points={newPoints0}
               drawing={drawing}
+              drawingPaused={drawingPaused}
+              setDrawingPaused={setDrawingPaused}
             />
           </g>
         </svg>

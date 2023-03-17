@@ -10,18 +10,18 @@ import {
 } from "./styles";
 
 const brushColors = [
-  "#ffffff",
-  "#fab005",
-  "#fd7e14",
-  "#fa5252",
-  "#e64980",
-  "#be4bdb",
-  "#7950f2",
-  "#15aabf",
-  "#12b886",
-  "#40c057",
-  "#82c91e",
-  "#000000",
+  "#ffffff", //white
+  "#f2ff00", //yellow
+  "#fd7e14", //orange
+  "#fa5252", //red
+  "#e64980", //pink
+  "#ba05e8", //violet
+  "#0508b0", //darkblue
+  "#00ccff", //lightblue
+  "#82c91e", //lightgreen
+  "#0f6300", //darkgreen
+  "#824d03", //brown
+  "#000000", //black
 ];
 
 const BrushColors = () => {
@@ -30,9 +30,10 @@ const BrushColors = () => {
   return (
     <Box sx={brushColorContainer}>
       <Flex
+        direction={"column"}
         justify="center"
         align="center"
-        gap={"10px"}
+        gap={"6px"}
         sx={{ marginBottom: "3px" }}
       >
         <Box

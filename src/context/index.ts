@@ -10,6 +10,8 @@ type TSketchbookContext = {
   setDashBrushType: React.Dispatch<React.SetStateAction<TDashBrushType>>;
   color: string;
   setColor: React.Dispatch<React.SetStateAction<string>>;
+  svgElement: string;
+  setSvgElement: React.Dispatch<React.SetStateAction<string>>;
 };
 
 export const SketchbookContext = createContext<TSketchbookContext>({
@@ -26,4 +28,6 @@ export const SketchbookContext = createContext<TSketchbookContext>({
   setDashBrushType: () => {},
   color: "#000",
   setColor: () => {},
+  svgElement: "",
+  setSvgElement: () => {},
 });

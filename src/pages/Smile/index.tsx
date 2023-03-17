@@ -28,11 +28,11 @@ const Smile = () => {
     });
   }, []);
 
-  const width = 400;
+  // const width = 400;
   const height = 900;
 
-  const centerX = width / 2;
-  const centerY = height / 2;
+  // const centerX = width / 2;
+  // const centerY = height / 2;
   const strokeWidth = 1.5;
   const strokeColor = "#d6d6d6";
 
