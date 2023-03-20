@@ -66,6 +66,22 @@ export const updateSketchbook = ({
   }
 };
 
+// undo
+export const undo = ({
+  area,
+  setLastStroke,
+}: {
+  area: d3.Selection<d3.BaseType, unknown, d3.BaseType, unknown>;
+  setLastStroke: (value: unknown) => void;
+}) => {
+  Array.from(area).forEach(function (element) {
+    const elementD = (element as SVGPathElement).getAttribute("d");
+    if (elementD !== null) {
+      setLastStroke(element);
+    }
+  });
+};
+
 // redo
 export const redo = ({
   svg,

@@ -24,6 +24,8 @@ type TSketchbookContext = {
   setSvgElement: React.Dispatch<React.SetStateAction<string>>;
   removedPaths: unknown[];
   setRemovedPaths: React.Dispatch<React.SetStateAction<unknown[]>>;
+  lastStroke: unknown;
+  setLastStroke: React.Dispatch<unknown>;
 };
 
 export const SketchbookContext = createContext<TSketchbookContext>({
@@ -48,4 +50,6 @@ export const SketchbookContext = createContext<TSketchbookContext>({
   setSvgElement: () => {},
   removedPaths: [],
   setRemovedPaths: () => {},
+  lastStroke: null,
+  setLastStroke: () => {},
 });

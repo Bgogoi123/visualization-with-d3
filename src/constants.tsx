@@ -13,14 +13,6 @@ import dash_5_5_10 from "./assets/images/dash_5_5_10.svg";
 import dash_5_5_5 from "./assets/images/dash_5_5_5.svg";
 import defaultBrush from "./assets/images/defaultBrush.svg";
 
-// svg images active:
-import dash_10_10_10_active from "./assets/images/dash_10_10_10_Active.svg";
-import dash_10_5_5_active from "./assets/images/dash_10_5_5_Active.svg";
-import dash_5_10_5_active from "./assets/images/dash_5_10_5_Active.svg";
-import dash_5_5_10_active from "./assets/images/dash_5_5_10_Active.svg";
-import dash_5_5_5_active from "./assets/images/dash_5_5_5_Active.svg";
-import defaultBrushActive from "./assets/images/defaultBrushActive.svg";
-
 export const links: {
   label: string;
   icon: JSX.Element;
@@ -41,11 +33,6 @@ export const links: {
     icon: <img src={pencilIcon} />,
     path: "/sketchbook",
   },
-  // {
-  //   label: "Trial",
-  //   icon: <img className="spinner" src={loaderIcon} />,
-  //   path: "/trial",
-  // },
 ];
 
 export const INIT_BRUSHES: TBrushesList[] = [
@@ -84,15 +71,6 @@ export const INIT_BRUSHES: TBrushesList[] = [
     type: "dash",
     value: "5,5,5",
   },
-];
-
-export const CHANGED_SRC = [
-  defaultBrushActive,
-  dash_10_10_10_active,
-  dash_10_5_5_active,
-  dash_5_10_5_active,
-  dash_5_5_10_active,
-  dash_5_5_5_active,
 ];
 
 export const SIZES = [1, 4, 8, 13, 30];

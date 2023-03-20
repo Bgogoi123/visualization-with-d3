@@ -4,7 +4,7 @@ import eraserCursor from "../../assets/icons/pointerIcons/eraserCursor.svg";
 import pencilCursor from "../../assets/icons/pointerIcons/pencilCursor.svg";
 import { SketchbookContext } from "../../context";
 import { TBrushType, TDashBrushType } from "../../types";
-import { redo } from "./functions";
+import { redo, undo } from "./functions";
 import { Line } from "./Line";
 import "./styles.css";
 import Tools from "./Tools";
@@ -13,7 +13,6 @@ const Sketchbook = () => {
   const [color, setColor] = useState<string>("#000");
   const [thickness, setThickness] = useState<number>(2);
   const [drawing, setDrawing] = useState<boolean>(false);
-  const [isUndo, setIsUndo] = useState<boolean>(false);
   const [lastStroke, setLastStroke] = useState<unknown>();
   const [svgElement, setSvgElement] = useState<string>("");
   const [removedPaths, setRemovedPaths] = useState<unknown[]>([]);
@@ -51,23 +50,16 @@ const Sketchbook = () => {
     setRemovedPaths([...removedPaths, lastStroke]);
     let lastPath = d3.select(`path[d="${dAttribute}"]`);
     lastPath.remove();
-  }, [isUndo, lastStroke]);
-
-  const undo = () => {
-    const area = d3.select("svg#drawable-area").selectAll("path");
-    Array.from(area).forEach(function (element) {
-      const elementD = (element as SVGPathElement).getAttribute("d");
-      if (elementD !== null) {
-        setLastStroke(element);
-      }
-    });
-  };
+  }, [lastStroke]);
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     // undo
     if (event.ctrlKey && event.key === "z") {
-      setIsUndo(true);
-      undo();
+      const area = d3.select("svg#drawable-area").selectAll("path");
+      undo({
+        area,
+        setLastStroke,
+      });
     }
 
     // redo
@@ -97,6 +89,8 @@ const Sketchbook = () => {
         setSvgElement,
         removedPaths,
         setRemovedPaths,
+        lastStroke,
+        setLastStroke,
       }}
     >
       <Tools />
