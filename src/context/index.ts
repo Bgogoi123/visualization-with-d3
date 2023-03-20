@@ -22,6 +22,8 @@ type TSketchbookContext = {
   >;
   svgElement: string;
   setSvgElement: React.Dispatch<React.SetStateAction<string>>;
+  removedPaths: unknown[];
+  setRemovedPaths: React.Dispatch<React.SetStateAction<unknown[]>>;
 };
 
 export const SketchbookContext = createContext<TSketchbookContext>({
@@ -44,4 +46,6 @@ export const SketchbookContext = createContext<TSketchbookContext>({
   setCurrentLine: () => {},
   svgElement: "",
   setSvgElement: () => {},
+  removedPaths: [],
+  setRemovedPaths: () => {},
 });

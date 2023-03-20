@@ -22,6 +22,8 @@ export const Line = ({
     svgElement,
     setSvgElement,
     currentLine,
+    removedPaths,
+    setRemovedPaths,
   } = useContext(SketchbookContext);
   const [mainPath, setMainPath] = useState<unknown>();
   const [enableRemove, setEnableRemove] = useState<boolean>(false);
@@ -47,11 +49,12 @@ export const Line = ({
         points,
         thickness,
         dashBrushType,
+        setRemovedPaths,
       });
     }
 
     if (drawingPaused === "end") {
-      const area: any = d3.select("svg#drawable-area").selectAll("path");
+      const area = d3.select("svg#drawable-area").selectAll("path");
       Array.from(area).forEach(function (element) {
         setMainPath(element);
         setEnableRemove(true);

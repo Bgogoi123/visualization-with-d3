@@ -10,7 +10,9 @@ export const definePath = ({
   points,
   thickness,
   dashBrushType,
+  setRemovedPaths,
 }: IDefinePath) => {
+  setRemovedPaths([]);
   svg
     .append("path")
     .datum(points)
@@ -62,4 +64,30 @@ export const updateSketchbook = ({
     oldArea.remove();
     container.html(svgElement);
   }
+};
+
+// redo
+export const redo = ({
+  svg,
+  removedPaths,
+}: {
+  svg: d3.Selection<d3.BaseType, unknown, HTMLElement, any>;
+  removedPaths: unknown[];
+}) => {
+  const removedPath = removedPaths.pop() as SVGPathElement;
+  const removedPathDetails = {
+    d: removedPath.getAttribute("d"),
+    stroke: removedPath.getAttribute("stroke"),
+    strokeWidth: removedPath.getAttribute("stroke-width"),
+    dashArray: removedPath.getAttribute("stroke-dasharray"),
+  };
+
+  svg
+    .append("path")
+    .attr("fill", "none")
+    .attr("stroke-linecap", "butt")
+    .attr("d", removedPathDetails.d)
+    .attr("stroke", removedPathDetails.stroke)
+    .attr("stroke-width", removedPathDetails.strokeWidth)
+    .attr("stroke-dasharray", removedPathDetails.dashArray);
 };

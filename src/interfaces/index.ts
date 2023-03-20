@@ -14,6 +14,7 @@ export interface IDefinePath {
   points: [number, number][];
   thickness: number;
   dashBrushType: TDashBrushType;
+  setRemovedPaths: React.Dispatch<React.SetStateAction<unknown[]>>;
 }
 
 export interface IRemoveExtraPaths {
