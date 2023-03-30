@@ -72,7 +72,7 @@ const Tools = () => {
         onClick={handleUndo}
         title="Undo (ctrl+z)"
       >
-        <img src={undoIcon} width="15px" height={"15px"} />
+        <img src={undoIcon} width="15px" height={"15px"} alt="Undo" />
       </ActionIcon>
 
       {/* redo */}
@@ -83,7 +83,7 @@ const Tools = () => {
         onClick={handleRedo}
         title="Redo (ctrl+y)"
       >
-        <img src={redoIcon} width="15px" height={"15px"} />
+        <img src={redoIcon} width="15px" height={"15px"} alt="Redo" />
       </ActionIcon>
 
       {/* clear all */}
@@ -94,7 +94,7 @@ const Tools = () => {
         onClick={clearAll}
         title="Clear all"
       >
-        <img src={clearIcon} width="15px" height={"15px"} />
+        <img src={clearIcon} width="15px" height={"15px"} alt="Clear all" />
       </ActionIcon>
 
       {/* eraser */}
@@ -105,7 +105,7 @@ const Tools = () => {
         onClick={handleErase}
         title="Eraser"
       >
-        <img src={eraserIcon} width="15px" height={"15px"} />
+        <img src={eraserIcon} width="15px" height={"15px"} alt="Eraser" />
       </ActionIcon>
 
       {/* Pencil */}
@@ -116,7 +116,7 @@ const Tools = () => {
         onClick={enablePencil}
         title="Pencil"
       >
-        <img src={pencilIcon} width="15px" height={"15px"} />
+        <img src={pencilIcon} width="15px" height={"15px"} alt="Pencil" />
       </ActionIcon>
 
       <BrushTypes />

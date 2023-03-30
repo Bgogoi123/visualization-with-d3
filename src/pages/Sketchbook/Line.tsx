@@ -22,7 +22,6 @@ export const Line = ({
     svgElement,
     setSvgElement,
     currentLine,
-    removedPaths,
     setRemovedPaths,
   } = useContext(SketchbookContext);
   const [mainPath, setMainPath] = useState<unknown>();

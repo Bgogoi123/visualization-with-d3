@@ -20,17 +20,17 @@ export const links: {
 }[] = [
   {
     label: "Home",
-    icon: <img src={homeIcon} />,
+    icon: <img src={homeIcon} alt="Icon showing a House" />,
     path: "/",
   },
   {
     label: "Smiling Cursor",
-    icon: <img src={smilingFace} />,
+    icon: <img src={smilingFace} alt="Icon showing a smiling emoji" />,
     path: "/smiley",
   },
   {
     label: "SketchBook",
-    icon: <img src={pencilIcon} />,
+    icon: <img src={pencilIcon} alt="Icon showing a pencil" />,
     path: "/sketchbook",
   },
 ];

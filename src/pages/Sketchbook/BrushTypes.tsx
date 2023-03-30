@@ -42,7 +42,12 @@ const BrushTypes = () => {
               size={"md"}
               title="Pick a brush"
             >
-              <img src={brushIcon} width="15px" height={"15px"} />
+              <img
+                src={brushIcon}
+                width="15px"
+                height={"15px"}
+                alt="Icon to show Brushes"
+              />
             </ActionIcon>
           </Text>
         </UnstyledButton>
@@ -54,7 +59,11 @@ const BrushTypes = () => {
         {INIT_BRUSHES.map((brush, index) => {
           return (
             <Menu.Item key={index} onClick={() => handleClick(brush)}>
-              <img src={brush.src} height="20px" />
+              <img
+                src={brush.src}
+                height="20px"
+                alt="Showing different brush types"
+              />
             </Menu.Item>
           );
         })}

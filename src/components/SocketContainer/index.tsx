@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { io, Socket } from "socket.io-client";
+import { io } from "socket.io-client";
 
 export const SocketContext = createContext<{ socket: any }>({
   socket: undefined,
@@ -7,8 +7,8 @@ export const SocketContext = createContext<{ socket: any }>({
 
 const SocketContainer = ({ children }: { children: JSX.Element }) => {
   const [socket, setSocket] = useState<any>();
-  const ngrokURL =
-    "https://8501-2405-201-a804-7cac-ad21-eb08-d984-4364.in.ngrok.io";
+  // const ngrokURL =
+  //   "https://8501-2405-201-a804-7cac-ad21-eb08-d984-4364.in.ngrok.io";
 
   useEffect(() => {
     setSocket(io("http://127.0.0.1:3000"));
