@@ -98,7 +98,15 @@ export const Line = ({
 
       setEnableRemove(false);
     }
-  }, [enableRemove]);
+  }, [
+    enableRemove,
+    brushType,
+    color,
+    dashBrushType,
+    mainPath,
+    socket,
+    thickness,
+  ]);
 
   // read svg data from backend
   socket?.on("svgDataLoaded", (svgData: any) => {
