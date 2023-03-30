@@ -62,7 +62,18 @@ export const Line = ({
 
       setDrawingPaused(false);
     }
-  }, [currentLine.points]);
+  }, [
+    currentLine.points,
+    brushType,
+    color,
+    dashBrushType,
+    drawing,
+    drawingPaused,
+    setDrawingPaused,
+    setRemovedPaths,
+    thickness,
+    thisLine,
+  ]);
 
   useEffect(() => {
     let svg = d3.select("#drawable-area");

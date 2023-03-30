@@ -19,7 +19,7 @@ const SocketContainer = ({ children }: { children: JSX.Element }) => {
     // );
 
     return () => socket?.disconnect;
-  }, []);
+  }, [socket?.disconnect]);
 
   return (
     <SocketContext.Provider value={{ socket }}>
