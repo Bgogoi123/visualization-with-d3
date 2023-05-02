@@ -2,7 +2,6 @@ import { TBrushesList } from "./types";
 
 // nav icons:
 import smilingFace from "./assets/emoji/smilingFace.svg";
-import homeIcon from "./assets/icons/homeIcon.svg";
 import pencilIcon from "./assets/icons/pencilIcon.svg";
 
 // svg images:
