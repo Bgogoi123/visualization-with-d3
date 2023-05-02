@@ -3,7 +3,6 @@ import "./App.css";
 import SideNav from "./components/SideNav";
 import SocketContainer from "./components/SocketContainer";
 import { ErrorPage } from "./pages/ErrorPage";
-import HomePage from "./pages/HomePage";
 import NavbarContent from "./pages/Navigation/NavbarContent";
 import NavHeader from "./pages/Navigation/NavHeader";
 import Sketchbook from "./pages/Sketchbook";
@@ -13,15 +12,6 @@ import TrialPage from "./pages/TrialPage";
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <SideNav navContent={<NavbarContent />} navHeader={<NavHeader />}>
-        <HomePage />
-      </SideNav>
-    ),
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/smiley",
     element: (
       <SideNav navContent={<NavbarContent />} navHeader={<NavHeader />}>
         <Smile />
@@ -34,15 +24,6 @@ const routes = createBrowserRouter([
     element: (
       <SideNav navContent={<NavbarContent />} navHeader={<NavHeader />}>
         <Sketchbook />
-      </SideNav>
-    ),
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/trial",
-    element: (
-      <SideNav navContent={<NavbarContent />} navHeader={<NavHeader />}>
-        <TrialPage />
       </SideNav>
     ),
     errorElement: <ErrorPage />,

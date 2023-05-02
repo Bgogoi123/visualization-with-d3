@@ -50,7 +50,7 @@ const Sketchbook = () => {
     setRemovedPaths([...removedPaths, lastStroke]);
     let lastPath = d3.select(`path[d="${dAttribute}"]`);
     lastPath.remove();
-  }, [lastStroke, removedPaths]);
+  }, [lastStroke]);
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     // undo

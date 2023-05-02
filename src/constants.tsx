@@ -19,14 +19,9 @@ export const links: {
   path: string;
 }[] = [
   {
-    label: "Home",
-    icon: <img src={homeIcon} alt="Icon showing a House" />,
-    path: "/",
-  },
-  {
     label: "Smiling Cursor",
     icon: <img src={smilingFace} alt="Icon showing a smiling emoji" />,
-    path: "/smiley",
+    path: "/",
   },
   {
     label: "SketchBook",

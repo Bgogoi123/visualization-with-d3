@@ -92,10 +92,10 @@ export const redo = ({
 }) => {
   const removedPath = removedPaths.pop() as SVGPathElement;
   const removedPathDetails = {
-    d: removedPath.getAttribute("d"),
-    stroke: removedPath.getAttribute("stroke"),
-    strokeWidth: removedPath.getAttribute("stroke-width"),
-    dashArray: removedPath.getAttribute("stroke-dasharray"),
+    d: removedPath?.getAttribute("d"),
+    stroke: removedPath?.getAttribute("stroke"),
+    strokeWidth: removedPath?.getAttribute("stroke-width"),
+    dashArray: removedPath?.getAttribute("stroke-dasharray"),
   };
 
   svg
