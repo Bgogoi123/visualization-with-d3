@@ -47,10 +47,13 @@ const Sketchbook = () => {
   useEffect(() => {
     //undo functionality
     const dAttribute = (lastStroke as SVGPathElement)?.getAttribute("d");
-    setRemovedPaths([...removedPaths, lastStroke]);
+    setRemovedPaths((prev) => {
+      let temp = [...prev, lastStroke];
+      return temp;
+    });
     let lastPath = d3.select(`path[d="${dAttribute}"]`);
     lastPath.remove();
-  }, [lastStroke, removedPaths]);
+  }, [lastStroke]);
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     // undo

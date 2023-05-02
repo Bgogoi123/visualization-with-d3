@@ -2,7 +2,6 @@ import { TBrushesList } from "./types";
 
 // nav icons:
 import smilingFace from "./assets/emoji/smilingFace.svg";
-import homeIcon from "./assets/icons/homeIcon.svg";
 import pencilIcon from "./assets/icons/pencilIcon.svg";
 
 // svg images:
@@ -19,14 +18,9 @@ export const links: {
   path: string;
 }[] = [
   {
-    label: "Home",
-    icon: <img src={homeIcon} alt="Icon showing a House" />,
-    path: "/",
-  },
-  {
     label: "Smiling Cursor",
     icon: <img src={smilingFace} alt="Icon showing a smiling emoji" />,
-    path: "/smiley",
+    path: "/",
   },
   {
     label: "SketchBook",
