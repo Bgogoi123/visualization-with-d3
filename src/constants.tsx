@@ -12,20 +12,24 @@ import dash_5_5_10 from "./assets/images/dash_5_5_10.svg";
 import dash_5_5_5 from "./assets/images/dash_5_5_5.svg";
 import defaultBrush from "./assets/images/defaultBrush.svg";
 
-export const links: {
+export const LINKS: {
   label: string;
   icon: JSX.Element;
   path: string;
+  description: string;
 }[] = [
   {
     label: "Smiling Cursor",
     icon: <img src={smilingFace} alt="Icon showing a smiling emoji" />,
     path: "/",
+    description: "Cursor that smiles, always.",
   },
   {
     label: "SketchBook",
     icon: <img src={pencilIcon} alt="Icon showing a pencil" />,
     path: "/sketchbook",
+    description:
+      "A Sketchbook just for you. Create your ideas with the available colors and brushes. Also share live with your friends!",
   },
 ];
 

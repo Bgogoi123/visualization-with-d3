@@ -1,22 +1,28 @@
-.spinner {
-  animation: spin 700ms linear infinite;
-  position: relative;
+.tourArrow {
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid silver;
+  float: left;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(90deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  75% {
-    transform: rotate(270deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.tourPopup {
+  position: absolute;
+  margin-left: 150px;
+  border: 2px solid #d6d6d6;
+  border-radius: 5px;
+  min-width: 100%;
+  background-color: #fff;
+  padding: 1em;
+  display: flex;
+  visibility: hidden;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  z-index: 1;
+}
+
+.tourPopupText {
+  font-size: 13px;
+  text-align: left;
 }

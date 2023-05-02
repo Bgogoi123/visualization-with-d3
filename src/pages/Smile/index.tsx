@@ -9,17 +9,6 @@ const Smile = () => {
     y: 0,
   });
 
-  // useEffect(() => {
-  //   function handleMouseMove(event: MouseEvent) {
-  //     setMousePos({
-  //       x: event.clientX,
-  //       y: event.clientY,
-  //     });
-  //   }
-
-  //   return window.addEventListener("mousemove", (e) => handleMouseMove(e));
-  // }, []);
-
   useEffect(() => {
     const mySvg = d3.select("svg");
     mySvg.on("mousemove", function (event) {
@@ -28,11 +17,8 @@ const Smile = () => {
     });
   }, []);
 
-  // const width = 400;
   const height = 900;
 
-  // const centerX = width / 2;
-  // const centerY = height / 2;
   const strokeWidth = 1.5;
   const strokeColor = "#d6d6d6";
 
@@ -49,28 +35,6 @@ const Smile = () => {
     .outerRadius(smileInnerRadius - 2)
     .startAngle(smileStartAngle)
     .endAngle(smileEndAngle);
-
-  // d3.select("svg")
-  //   .selectAll("g")
-  //   .each(function () {
-  // d3.select(this)
-  //   .append("rect")
-  //   .attr("width", "100px")
-  //   .attr("height", "100px")
-  //   .attr("x", mousePos.x)
-  //   .attr("y", mousePos.y)
-  //   .style("fill", "transparent")
-  //   .style("stroke", "black");
-  // ------------ circles
-  // d3.select(this)
-  //   .append("circle")
-  //   .attr("r", "50px")
-  //   .attr("fill", "whitesmoke")
-  //   .attr("cx", mousePos.x)
-  //   .attr("cy", mousePos.y)
-  //   .attr("stroke", "red")
-  //   .attr("strokeWidth", "20px");
-  // });
 
   return (
     <div className="container">

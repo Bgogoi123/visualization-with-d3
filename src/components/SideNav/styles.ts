@@ -1,5 +1,6 @@
 import { CSSObject } from "@mantine/core";
 export const linkContainer: CSSObject = {
+  position: "relative",
   marginTop: "10px",
   border: "1px solid #D6D6D6",
   borderRadius: "5px",
@@ -8,8 +9,8 @@ export const linkContainer: CSSObject = {
   "&:hover": {
     backgroundColor: "whitesmoke",
   },
-  "&:active": {
-    transform: "scale(0.95)",
-    backgroundColor: "#D6D6D6",
-  },
+  // "&:active": {
+  //   transform: "scale(0.95)",
+  //   backgroundColor: "#D6D6D6",
+  // },
 };
