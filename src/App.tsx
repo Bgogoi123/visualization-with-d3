@@ -7,7 +7,6 @@ import NavbarContent from "./pages/Navigation/NavbarContent";
 import NavHeader from "./pages/Navigation/NavHeader";
 import Sketchbook from "./pages/Sketchbook";
 import Smile from "./pages/Smile";
-import TrialPage from "./pages/TrialPage";
 
 const routes = createBrowserRouter([
   {
